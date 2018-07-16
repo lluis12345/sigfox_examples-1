@@ -34,3 +34,18 @@ Custom made GPS tracker and accelerometer data examples for low-powered Sigfox m
 - interval in seconds: turn on the accelerometer and calculate the data in some interval
 ### Baud rate - 460800 bps
 The higher is the baud rate, the higher frequency can be set. If it is not enough, the program will give exception during printing the values from the accelerometer in the terminal.
+
+## Example acc_data.c
+Configures the accelerometer and prints 3 axes data
+### Commands
+#### AT$ACCFREQ= 
+- If empty prints the current value
+- (value: frequency) - (1: 1Hz), (2: 10Hz), (3: 25Hz), (4: 50Hz), (5: 100Hz), (6: 200Hz), (7: 400Hz), (8: 1.25KHz)
+- Default value - 1Hz
+#### AT$ACCSCALE=
+- If empty prints the current value
+- (value: scale) - (1: 2G), (2: 4G), (3, 8G), (4: 16G)
+- Default value - 2G
+#### AT$ACCDATA=
+- 1: turn on/off the accelerometer
+- 2: enable/disable printing of current accelerometer data
