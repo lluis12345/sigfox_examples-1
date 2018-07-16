@@ -49,3 +49,23 @@ Configures the accelerometer and prints 3 axes data
 #### AT$ACCDATA=
 - 1: turn on/off the accelerometer
 - 2: enable/disable printing of current accelerometer data
+### Baud rate - 460800 bps
+The higher is the baud rate, the higher frequency can be set. If it is not enough, the program will give exception during printing the values from the accelerometer in the terminal.
+
+## Example pw_test.c
+Configures GPS and sends messages at given interval
+* Added custom commands for GPS timeout, GPS fixing interval and GPS fixing mode
+* Defaults: 180 seconds timeout, 2 hours fixing interval, TD_GEOLOC_HW_BCKP GPS mode
+* 12 bytes message - 4 bytes latitude, 4 bytes longitude, 1 byte voltage, 1 byte temperature
+* Sends keepalive message at every boot
+* At every boot waits 180 seconds for commands through the serial(if connected), after that starts fixing with default values.
+### Commands
+#### AT$MODE=
+- sets GPS sleep mode
+- (value: mode) - (0: TD_GEOLOC_OFF), (1: TD_GEOLOC_HW_BCKP), (2: TD_GEOLOC_POWER_SAVE_MODE)
+#### AT$TIMEOUT=
+- sets GPS timeout
+- timeout in seconds
+#### AT$PWTEST=
+- manually starts the fixing with given interval
+- fixing interaval in seconds
