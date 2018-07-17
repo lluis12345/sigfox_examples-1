@@ -11,11 +11,11 @@ Custom made GPS tracker and accelerometer data examples for low-powered Sigfox m
 
 ## General Message Fromat
   In all of the examples is used 12 bytes message format for transceiving the information from the module(GPS and accelerometer data). Message is formed by using some of the code in above tutorial:
-  4 bytes - GPS latitude
-  4 bytes - GPS longitude
-  1 byte - Voltage
-  1 byte - Temperature
-  2 bytes - Free or used to tranceive the minimum value of one of the accelerometer axis  
+ - 4 bytes - GPS latitude
+ - 4 bytes - GPS longitude
+ - 1 byte - Voltage
+ - 1 byte - Temperature
+ - 2 bytes - Free or used to tranceive the minimum value of one of the accelerometer axis  
 
 ## Baud rate
   The default baud rate is 9600. Even though, if you want to use accelerometer at higher rates than 10Hz and to get the data through the serial port, you need to set the baud rate to different values. The highest rate is 460800 bps. In the examples acc_calc and acc_data the rate is 460800 bps.
