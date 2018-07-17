@@ -8,6 +8,7 @@ Custom made GPS tracker and accelerometer data examples for low-powered Sigfox m
 * To configure your environment use the tutorial.
 * The examples are only built and tested for TD1205P module.
 * To see the recieved messages use Sigfox backend - https://backend.sigfox.com
+* To build one of the examples you need to check the "Exclude resource from build" in Build Properties of all the other src files!!!
 
 ## General Message Fromat
   In all of the examples is used 12 bytes message format for transceiving the information from the module(GPS and accelerometer data). Message is formed by using some of the code in above tutorial:
