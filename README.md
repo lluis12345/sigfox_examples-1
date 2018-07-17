@@ -1,10 +1,13 @@
 # sigfox_examples
 Custom made GPS tracker and accelerometer data examples for low-powered Sigfox module TD1205P.
 
-## Used information
+## Useful information
 
 * Telecom Design SDK given for their Sigfox modules - https://github.com/Telecom-Design
 * Basics and message formating from this tutorial - http://www.instructables.com/id/Sigfox-GPS-Tracker/
+* To configure your environment use the tutorial.
+* The examples are only built and tested for TD1205P module.
+* To see the recieved messages use Sigfox backend - https://backend.sigfox.com
 
 ## General Message Fromat
   In all of the examples is used 12 bytes message format for transceiving the information from the module(GPS and accelerometer data). Message is formed by using some of the code in above tutorial:
@@ -14,6 +17,9 @@ Custom made GPS tracker and accelerometer data examples for low-powered Sigfox m
   1 byte - Temperature
   2 bytes - Free or used to tranceive the minimum value of one of the accelerometer axis  
 
+## Baud rate
+  The default baud rate is 9600. Even though, if you want to use accelerometer at higher rates than 10Hz and to get the data through the serial port, you need to set the baud rate to different values. The highest rate is 460800 bps. In the examples acc_calc and acc_data the rate is 460800 bps.
+  
 ## Example acc_calc.c
  Calculates and prints minimum, maximum, the average and standard deviation of the accelerometer data for x, y, z at given interval
 ### Commands
@@ -32,8 +38,6 @@ Custom made GPS tracker and accelerometer data examples for low-powered Sigfox m
 #### AT$CALC=
 - 0: turn off the accelerometer and calculation of the data
 - interval in seconds: turn on the accelerometer and calculate the data in some interval
-### Baud rate - 460800 bps
-The higher is the baud rate, the higher frequency can be set. If it is not enough, the program will give exception during printing the values from the accelerometer in the terminal.
 
 ## Example acc_data.c
 Configures the accelerometer and prints 3 axes data
@@ -49,8 +53,6 @@ Configures the accelerometer and prints 3 axes data
 #### AT$ACCDATA=
 - 1: turn on/off the accelerometer
 - 2: enable/disable printing of current accelerometer data
-### Baud rate - 460800 bps
-The higher is the baud rate, the higher frequency can be set. If it is not enough, the program will give exception during printing the values from the accelerometer in the terminal.
 
 ## Example pw_test.c
 Configures GPS and sends messages at given interval
@@ -66,6 +68,20 @@ Configures GPS and sends messages at given interval
 #### AT$TIMEOUT=
 - sets GPS timeout
 - timeout in seconds
+#### AT$PWTEST=
+- manually starts the fixing with given interval
+- fixing interaval in seconds
+
+## Example pw_test_acc.c
+Configures GPS, sends messages at given interval, saves the minimum value of axis Z during the sleep GPS interval. The Z value is saved in the 11th and 12th bytes.
+#### AT$MODE=
+- sets GPS sleep mode
+- (value: mode) - (0: TD_GEOLOC_OFF), (1: TD_GEOLOC_HW_BCKP), (2: TD_GEOLOC_POWER_SAVE_MODE)
+#### AT$TIMEOUT=
+- sets GPS timeout
+- timeout in seconds
+#### AT$ACC=
+- 0/1 - turn off/on the accelerometer and saving the minimum Z value
 #### AT$PWTEST=
 - manually starts the fixing with given interval
 - fixing interaval in seconds
