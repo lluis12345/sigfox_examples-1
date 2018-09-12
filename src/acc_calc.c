@@ -1,4 +1,4 @@
-/******************************************************************************
+/******************************************************************************aa
  * @file
  * @brief Simple GPS periodic fix application for the TDxxxx RF modules.
  * @author Telecom Design S.A.
